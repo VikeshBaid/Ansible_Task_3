@@ -10,9 +10,9 @@
 
 Lauched a Infrastructure in which a Load Balancer is managing three Target system. Webserver is running on the three target system. For creating a load balancer HAproxy software is used which internally uses Round Robin algorithm.
 
-1. **ec2\\_provision script**
+1. **ec2\_provision script**
   - Ansible Module Used: **ec2**
   - creates 1 Load Balancer instance and 3 Websever instance
 
-2. **lb\\_setup script**
+2. **lb\_setup script**
 
