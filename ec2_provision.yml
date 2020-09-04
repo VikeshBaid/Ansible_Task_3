@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  vars_files:
+    - secret.yml
+  tasks:
+  - name: provision instance for load balancer
+    ec2:
+      key_name: "recovery_key"
+      instance_type: "t2.micro"
+      image: "ami-0810abbfb78d37cdf"
+      instance_tags:
+        Name: lb
+      count_tag: lb
+      exact_count: 1
+      vpc_subnet_id: "subnet-ed84778b"
+      assign_public_ip: yes
+      region: "ap-southeast-2"
+      group_id: "sg-04f2fe959322ebe2d"
+      wait: yes
+      aws_access_key: "{{ user_name }}"
+      aws_secret_key: "{{ password }}"
+
+  - name: provision instance for webserver
+    ec2:
+      key_name: "recovery_key"
+      instance_type: "t2.micro"
+      image: "ami-0810abbfb78d37cdf"
+      instance_tags:
+        Name: webserver
+      count_tag: webserver
+      exact_count: 3 
+      vpc_subnet_id: "subnet-ed84778b"
+      assign_public_ip: yes
+      region: "ap-southeast-2"
+      group_id: "sg-0653cf3b51b880992"
+      wait: yes
+      aws_access_key: "{{ user_name }}"
+      aws_secret_key: "{{ password }}"
