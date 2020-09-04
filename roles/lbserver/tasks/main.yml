@@ -1,0 +1,18 @@
+---
+# tasks file for lbserver
+
+- name: install HAproxy software in ec2 instance
+  package:
+    name: "haproxy"
+    state: present
+
+- name: copy haproxy config file
+  template:
+    src: "haproxy.cfg"
+    dest: "/etc/haproxy/haproxy.cfg"
+  notify: restart haproxy service
+
+- name: start haproxy service
+  service:
+    name: "haproxy"
+    state: started

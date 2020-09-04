@@ -1,0 +1,17 @@
+---
+# tasks file for webserver
+
+- name: install httpd server on ec2 instance
+  package:
+    name: "httpd"
+    state: present
+
+- name: copy content
+  copy:
+    content: "hi from private ip {{ ansible_hostname }} of aws ec2 machine" 
+    dest: /var/www/html/index.html
+
+- name: httpd service starts
+  service:
+    name: "httpd"
+    state: started
