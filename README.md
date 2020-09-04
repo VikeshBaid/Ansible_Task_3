@@ -31,12 +31,12 @@ Lauched a Infrastructure in which a Load Balancer is managing three Target syste
 
 5. **roles directory**
   - contains two roles
-    1. lbserver
+    1. **lbserver**
       - Ansible Module Used: **package**, **template**, **service**
       - **package** module is used to install HAproxy software.
-      - **template** module is used to copy the "haproxy.cfg" file. I have used jinja2 template in it which first add all the ip from dynamic inventory and then copy the configuration file into **load balacner instance**.
-      - **service** to start and restart the service in **load balaner instance**. 
-    2. webserver
+      - **template** module is used to copy the "haproxy.cfg" file. I have used jinja2 template in it which first add all the ip from dynamic inventory and then copy the configuration file into **load balancer instance**.
+      - **service** to start and restart the service in **load balancer instance**. 
+    2. **webserver**
       - Ansible Module Used: **package**, **copy**, **service**
       - **package** module is used to install Httpd software.
       - **copy** module is used to copy file in /var/www/html destination.
